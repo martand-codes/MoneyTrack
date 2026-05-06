@@ -143,7 +143,7 @@ VITE_API_BASE=http://localhost:5000
 # Installation & Setup
 
 Clone Repository
-git clone <your_repo_url>
+git clone https://github.com/martand-codes/MoneyTrack.git
 cd MoneyTrack
 
 # Backend Setup
