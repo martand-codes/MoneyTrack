@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # The Backend Service
+  moneytrack-api:
+    build: ./Backend
+    container_name: moneytrack-backend-container
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./Backend/.env
+    networks:
+      - moneytrack-network
+
+  # The Frontend Service
+  moneytrack-ui:
+    build:
+      context: ./Frontend
+      args:
+        - VITE_API_BASE=http://localhost:5000
+    container_name: moneytrack-frontend-container
+    ports:
+      - "3000:80"
+   
+    env_file:
+      - ./Frontend/.env
+    networks:
+      - moneytrack-network
+    depends_on:
+      - moneytrack-api
+
+networks:
+  moneytrack-network:
+    driver: bridge
