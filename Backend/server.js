@@ -25,9 +25,17 @@ app.use("/api/dashboard", dashboardRouter);
 
 
 app.get("/", (req, res) => {
-    res.status(200).json({
+    res.json({
         success: true,
-        message: "MoneyTrack Backend API is Live 🚀"
+        project: "MoneyTrack API",
+        message: "Backend is running successfully!",
+        version: "1.0.0"
+    });
+});
+
+app.get("/healthz", (req, res) => {
+    res.status(200).json({
+        status: "OK"
     });
 });
 
